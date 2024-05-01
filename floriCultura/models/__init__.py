@@ -20,3 +20,5 @@ COLOR_CHOICE = (
 from .Address import Address
 from .Category import Category
 from .Product import Product
+from .Stock import Stock
+from .Client import Client
