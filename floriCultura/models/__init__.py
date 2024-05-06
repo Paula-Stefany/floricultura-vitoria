@@ -13,3 +13,5 @@ from .Stock import Stock
 from .Client import Client
 from .Rating import Rating
 from .Coupon import Coupon
+from .OrderItem import OrderItem
+from .Order import Order
