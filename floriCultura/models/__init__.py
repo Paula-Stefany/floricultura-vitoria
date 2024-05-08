@@ -4,7 +4,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver 
 
 
-
+from .State import State
+from .City import City
+from .Neighborhood import Neighborhood
 from .Address import Address
 from .Category import Category
 from .Color import Color
