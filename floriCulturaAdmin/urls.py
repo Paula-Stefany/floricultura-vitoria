@@ -21,6 +21,7 @@ from django.conf import settings
 
 
 urlpatterns = [
+    path('', include('floriCultura.urls.HomeUrls')),
     path('admin/', admin.site.urls),
-    path('FloriCultura_Vitória', include('floriCultura.urls.HomeUrls'))
+    path('profile/', include('floriCultura.urls.ClientUrls')),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
