@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(254, 254, 242);
+}
+
+.form{
+    display: flex;
+}
+
+.formulario{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    padding: 30px;
+    width: auto;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgb(233, 232, 232);
+    border-radius: 3px;
+}
+
+.title{
+    color: #621b02;
+}
+
+.input-group{
+    display: flex;
+    justify-content:space-between;
+}
+
+.input-group1{
+    display: block;
+    margin-right: 8px;
+}
+
+.input-group2{
+    display: block;
+    margin-left: 8px;
+}
+
+.input-box{
+    padding: 8px;
+    margin-top: 6px;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 1px 1px 5px rgb(233, 232, 232);
+    outline: none;
+    width: 200px;
+}
+
+.title2{
+    font-size: 12px;
+    margin-top: 10px;
+    color: #621b02;
+
+}
+
+.link-password{
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+.link-password a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #621b02;
+
+}
+
+button{
+    width: 50%;
+    height: 31px;
+    margin-top: 9px;
+    background: rgb(208, 58, 4);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px rgb(233, 232, 232);
+    color: #ffffff;
+}

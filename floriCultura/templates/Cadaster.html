@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../../static/auth.css"> 
+</head>
+<body>
+    <div class="formulario">
+        <form>
+            <div class="title">
+                <h1>Cadastro</h1>
+            </div>
+            <div class="title2">
+                <h2>Dados Pessoais</h2>
+            </div>
+            <div class="input-group">
+                <div class="input-group1">
+                    {% for f in cadaster_form %}
+                        {{ f }}
+                    {% endfor %}
+                    <div class="title2">
+                        <h2>Endereço de Entrega</h2>
+                    </div>
+                    {{ address_form.receiver }}
+                    {{ address_form.street }}
+                </div>
+                <div class="input-group2">
+                    {{ address_form.neighborhood }}
+                    {{ address_form.city }}
+                    {{ address_form.state }}
+                    {{ address_form.number }}
+                    {{ address_form.complement }}
+                    {{ address_form.cep }}
+                    <div class="link-password">
+                        <a href="#">Já possui conta? login</a>
+                    </div>
+                    <button>
+                        Cadastrar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
