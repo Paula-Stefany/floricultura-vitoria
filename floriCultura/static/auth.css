@@ -8,10 +8,6 @@ body{
     background-color: rgb(254, 254, 242);
 }
 
-.form{
-    display: flex;
-}
-
 .formulario{
     position: absolute;
     top: 50%;
@@ -21,27 +17,53 @@ body{
     padding: 30px;
     width: auto;
     background: #ffffff;
-    box-shadow: 0 0 10px rgb(233, 232, 232);
+    box-shadow: 0 0 10px rgb(238, 236, 236);
     border-radius: 3px;
 }
 
+.formulario:hover{
+    box-shadow: 0 0 10px rgb(231, 229, 229);
+}
+
+.form{
+    display: flex;
+}
+
 .title{
+    color: #621b02;
+    margin-bottom: 30px;
+}
+
+.title::after{
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.4rem;
+    background-color: #df3e03;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.title2{
+    font-size: 11.5px;
+    margin-top: 10px;
     color: #621b02;
 }
 
 .input-group{
     display: flex;
-    justify-content:space-between;
 }
 
 .input-group1{
     display: block;
-    margin-right: 8px;
+    margin-right: 0.3rem;
 }
 
 .input-group2{
     display: block;
-    margin-left: 8px;
+    text-align: right;
+    margin-left: 0.3rem;
 }
 
 .input-box{
@@ -49,38 +71,52 @@ body{
     margin-top: 6px;
     border-radius: 3px;
     border: none;
-    box-shadow: 1px 1px 5px rgb(233, 232, 232);
+    box-shadow: 1px 1px 5px rgb(231, 231, 231);
     outline: none;
-    width: 200px;
+    width: 13.5rem;
 }
 
-.title2{
-    font-size: 12px;
-    margin-top: 10px;
-    color: #621b02;
-
+.input-box:hover,
+.input-box:focus{
+    background: rgb(247, 247, 246);
+    box-shadow: 1px 1px 5px rgb(216, 216, 216);
 }
 
-.link-password{
+.input-box::placeholder{
+    font-size: 0.7rem;
+    color: rgb(162, 161, 161);
+}
+
+.link-login{
     margin-top: 6px;
     margin-bottom: 4px;
 }
 
-.link-password a{
+.link-login a{
     text-decoration: none;
     font-size: 14px;
     color: #621b02;
-
 }
 
-button{
-    width: 50%;
+.link-login a:hover{
+    color: rgb(152, 44, 4);
+}
+
+.button{
+    width: 13.5rem;
     height: 31px;
     margin-top: 9px;
     background: rgb(208, 58, 4);
     border: none;
     outline: none;
+    box-shadow: 1px 1px 5px rgb(231, 231, 231);
     border-radius: 3px;
-    box-shadow: 1px 1px 5px rgb(233, 232, 232);
     color: #ffffff;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.button:hover{
+    background: rgb(193, 53, 2);
+    box-shadow: 1px 1px 5px rgb(216, 216, 216);
 }
