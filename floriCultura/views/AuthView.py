@@ -1,4 +1,5 @@
 from floriCultura.forms.auth.CadasterForm import CadasterForm
+from floriCultura.forms.auth.LoginForm import LoginForm
 from floriCultura.forms.address.AddressForm import AddressForm
 from django.shortcuts import render
 
@@ -16,7 +17,13 @@ def cadaster_view(request):
 
 
 def login_view(request):
-    pass 
+    
+    login_form = LoginForm()
+    context = {
+        'login_form' : login_form,
+    }
+
+    return render(request, template_name='Login.html', context=context, status=200)
 
 
 def logout_view(request):

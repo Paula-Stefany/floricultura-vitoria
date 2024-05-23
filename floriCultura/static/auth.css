@@ -45,6 +45,21 @@ body{
     border-radius: 10px;
 }
 
+.link{
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+.link a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #621b02;
+}
+
+.link a:hover{
+    color: rgb(152, 44, 4);
+}
+
 .title2{
     font-size: 11.5px;
     margin-top: 10px;
@@ -53,20 +68,29 @@ body{
 
 .input-group{
     display: flex;
+    width: auto;
 }
 
 .input-group1{
     display: block;
-    margin-right: 0.3rem;
+    margin-right: 0.6rem;
+    width: auto;
 }
 
 .input-group2{
     display: block;
-    text-align: right;
-    margin-left: 0.3rem;
+    margin-left: 0.6rem;
+    width: auto;
+}
+
+
+.input-group-login{
+    display: block;
+    width: auto;
 }
 
 .input-box{
+    display: block;
     padding: 8px;
     margin-top: 6px;
     border-radius: 3px;
@@ -87,22 +111,7 @@ body{
     color: rgb(162, 161, 161);
 }
 
-.link-login{
-    margin-top: 6px;
-    margin-bottom: 4px;
-}
-
-.link-login a{
-    text-decoration: none;
-    font-size: 14px;
-    color: #621b02;
-}
-
-.link-login a:hover{
-    color: rgb(152, 44, 4);
-}
-
-.button{
+button{
     width: 13.5rem;
     height: 31px;
     margin-top: 9px;
@@ -116,7 +125,7 @@ body{
     font-size: 0.8rem;
 }
 
-.button:hover{
+button:hover{
     background: rgb(193, 53, 2);
     box-shadow: 1px 1px 5px rgb(216, 216, 216);
 }
