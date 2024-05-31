@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(254, 254, 242);
+}
+
+.container-header header{
+    display: flex;
+    background: white;
+    box-shadow: 0 0 10px rgb(231, 229, 229);
+    justify-content: space-between;
+}
+
+.container-header header:hover{
+    box-shadow: 0 0 10px rgb(225, 224, 224);
+}
+
+.links-direita{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+a{
+    text-decoration: none;
+    margin-right: 1rem;
+    color: #621b02;
+    font-size: 1rem;
+}
+
+a:hover{
+    color: #822503;
+}
+
+.imagem img{
+    width: 6rem;
+    height: 6rem;
+}
+
+
+.filtro{
+    display: flex;
+    justify-content: space-between;
+}
+
+.area-categorias{
+    display: flex;
+    padding: 1.5rem;
+}
+
+.quadrado-categoria{
+    width: 5.5rem;
+    height: 5.5rem;
+    background: white;
+    box-shadow: 1.6px 1.6px 1.7px rgb(147, 114, 114);
+    margin-right: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    background: rgb(203, 181, 148);
+    align-content: center;
+    text-align: center;
+}
+
+p{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #621b02;
+}
+
+i{
+    font-size: 1.9rem;
+    color: #621b02;
+    margin-bottom: 0.3rem;
+}
+
+#car-icon{
+    color: #621b02;
+    font-size: 1.2rem;
+}
+
+.quadrado-categoria:hover{
+    box-shadow: 0 0 5px rgb(207, 204, 204);
+}
+
+.filtro-pesquisa{
+    align-content: center;
+    margin-right: 1.6rem;
+}
+
+.input-box{
+    padding: 0.4rem;
+    border: 1.7px solid rgb(203, 181, 148);
+    border-radius: 0.3rem;
+    width: 13rem;
+    outline: none;
+    display: flex;
+}
+
+input{
+    border: none;
+    outline: none;
+
+}
+
+.input-box:hover,
+.input-box:focus{
+    background: rgb(250, 245, 244);
+}
+
+input:hover,
+input:focus{
+    background: rgb(250, 245, 244);
+}
+
+input::placeholder{
+    font-size: 0.8rem;
+    color: rgb(162, 161, 161);
+}
+
+#icon-pesquisa{
+    color: rgb(162, 161, 161);
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+}
