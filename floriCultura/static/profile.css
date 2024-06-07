@@ -109,3 +109,48 @@ i{
     border-radius: 0.5rem;
     padding: 0.7rem;
 }
+
+.imagem-produto{
+    width: 6.4rem;
+    height: 6.4rem;
+}
+
+.favorite-product{
+    display: flex;
+    background: rgb(249, 247, 244);
+    margin-bottom: 0.5rem;
+}
+
+.product-info{
+    padding: 0.8rem;
+    align-content: center;
+}
+
+button{
+    width: 6rem;
+    height: 1.6rem;
+    background: rgb(124, 38, 38);
+    border: none;
+    color:white;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+button:hover{
+    cursor: pointer;
+    background:  rgb(109, 34, 34);
+}
+
+.container2{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.area-ultimas-compras{
+    padding: 0.7rem;
+    background: white;
+    box-shadow: 0 0 5px rgb(221, 221, 221);
+    border-radius: 0.5rem;
+    width: 21rem;
+}
