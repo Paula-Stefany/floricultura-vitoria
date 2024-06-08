@@ -27,6 +27,11 @@ body, html{
 #user-icon{
     margin-right: 0.5rem;
     font-size: 1rem;
+    color: #621b02;
+}
+
+.icon{
+    color: rgb(124, 124, 123);
 }
 
 .interacao strong{
@@ -53,17 +58,19 @@ body, html{
 
 .title2{
     color: #621b02;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     margin-bottom: 0.8rem;
+    text-transform:uppercase;
 }
 
 p,
 i{
-    color: #621b02;
-    font-size: 0.8rem;
+    color: rgb(173, 172, 172);
+    font-size: 0.7rem;
     margin-bottom: 0.4rem;
-    font-weight: bold;
     margin-right: 0.4rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
 }
 
 .dados-sensiveis{
@@ -94,8 +101,8 @@ i{
     width: 26rem;
     height: auto;
     background: white;
-    box-shadow: 0 0 5px rgb(221, 221, 221);
-    border-radius: 0.5rem;
+    box-shadow: 1px 1.6px 5px rgb(221, 221, 221);
+    border-radius: 0.3rem;
     padding: 0.7rem;
     margin-bottom: 1rem;
 }
@@ -105,8 +112,8 @@ i{
     height: auto;
     max-height: 18.5rem;
     background: white;
-    box-shadow: 0 0 5px rgb(221, 221, 221);
-    border-radius: 0.5rem;
+    box-shadow: 1px 1.6px 5px rgb(221, 221, 221);
+    border-radius: 0.3rem;
     padding: 0.7rem;
 }
 
@@ -117,7 +124,7 @@ i{
 
 .favorite-product{
     display: flex;
-    background: rgb(249, 247, 244);
+    background: rgb(247, 243, 238);
     margin-bottom: 0.5rem;
 }
 
@@ -129,9 +136,9 @@ i{
 button{
     width: 6rem;
     height: 1.6rem;
-    background: rgb(124, 38, 38);
-    border: none;
-    color:white;
+    background: none;
+    border: 1.2px solid  rgb(197, 33, 33);
+    color: rgb(197, 33, 33);
     border-radius: 0.8rem;
     font-size: 0.8rem;
     margin-top: 0.2rem;
@@ -139,7 +146,7 @@ button{
 
 button:hover{
     cursor: pointer;
-    background:  rgb(109, 34, 34);
+    outline: 0.1px solid  rgb(197, 33, 33);
 }
 
 .container2{
@@ -150,7 +157,21 @@ button:hover{
 .area-ultimas-compras{
     padding: 0.7rem;
     background: white;
-    box-shadow: 0 0 5px rgb(221, 221, 221);
-    border-radius: 0.5rem;
+    box-shadow: 1px 1.6px 5px rgb(221, 221, 221);
+    border-radius: 0.3rem;
     width: 21rem;
+    height: auto;
+    max-height: 27rem;
+}
+
+.ultimas-compras{
+    display: flex;
+    background: rgb(244, 250, 244);
+    margin-bottom: 0.3rem;
+}
+
+.img-produto-compra{
+    width: 5.2rem;
+    height: 5.2rem;
+    border: 1ps solid black;
 }
