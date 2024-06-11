@@ -10,6 +10,20 @@ def cadaster_view(request):
 
     cadaster_form = CadasterForm()
     address_form = AddressForm()
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST['email']
+        cpf = request.POST['cpf']
+        senha = request.POST['senha2']
+
+        cadaster_form = CadasterForm(request.POST)
+        if cadaster_form.is_valid():
+            print('oi')
+            print(f'Username: {username} - Email: {email} - CPF: {cpf} - Senha: {senha}')
+        else:
+            print('Erro')
+
     context = {
         'cadaster_form': cadaster_form,
         'address_form': address_form,
