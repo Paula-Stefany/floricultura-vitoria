@@ -1,6 +1,7 @@
 from django.forms import ModelForm 
 from django import forms 
 from floriCultura.models.Client import Client
+from ..form_validators import validate_cpf
 
 
 class ClientForm(ModelForm):
@@ -15,4 +16,9 @@ class ClientForm(ModelForm):
             'cpf': forms.TextInput(attrs={'class': 'input-box'})
         }
 
+    def clean_cpf(self):
+        cpf = self.cleaned_data.get('cpf')
+        validate_cpf(cpf)
+
+        return cpf
     

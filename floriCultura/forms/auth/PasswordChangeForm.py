@@ -1,6 +1,6 @@
 from django import forms 
 from django.core.exceptions import ValidationError
-
+from ..form_validators import validate_password_equal, validate_password_strength
 
 class PasswordChangeForm(forms.Form):
 
@@ -11,7 +11,7 @@ class PasswordChangeForm(forms.Form):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
         
-        if password1 and password2 and password1 != password2:
-            raise ValidationError('As senhas não coincidem')
+        validate_password_equal(password1, password2)
+        validate_password_strength(password1)
+        
         return password2
-    

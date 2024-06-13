@@ -1,6 +1,5 @@
-from typing import Any
 from django import forms
-from django.core.exceptions import ValidationError
+from ..form_validators import validate_password_equal, validate_password_strength, validate_cpf
 
 
 class CadasterForm(forms.Form):
@@ -12,9 +11,16 @@ class CadasterForm(forms.Form):
     password2 = forms.CharField(max_length=20, required=True, widget=forms.PasswordInput(attrs={'class': 'input-box', 'placeholder': 'Confirme a Senha *'}))
 
     def clean_password2(self):
-        password1 = self.cleaned_data.get('senha1')
-        password2 = self.cleaned_data.get('senha2')
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
 
-        if password1 and password2 and password1 != password2:
-            raise ValidationError('As senhas não coicidem')
+        validate_password_equal(password1, password2)
+        validate_password_strength(password1)
+
         return password2
+    
+    def clean_cpf(self):
+        cpf  = self.cleaned_data.get('cpf')
+
+        validate_cpf(cpf)
+        return cpf

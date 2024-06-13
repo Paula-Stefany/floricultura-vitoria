@@ -1,9 +1,11 @@
+from typing import Any
 from django.forms import ModelForm
 from django import forms
 from floriCultura.models.Address import Address
+from ..form_validators import validate_cep
 
 
-class AddressForm(ModelForm):
+class ClientAddressForm(ModelForm):
 
     class Meta:
         model = Address
@@ -18,3 +20,9 @@ class AddressForm(ModelForm):
             'receiver': forms.TextInput(attrs={'class': 'input-box'}),
             'cep': forms.TextInput(attrs={'class': 'input-box'})
         }
+
+    def clean_cep(self):
+        cep = self.cleaned_data.get(cep)
+
+        validate_cep(cep)
+        return cep
