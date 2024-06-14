@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Address Screen</title>
+    <link rel="stylesheet" href="../static/auth.css">
+</head>
+<body>
+    <div class="formulario">
+        <form method="POST" action="">
+            <div class="title">
+                <h1>Editar Endereço</h1>
+            </div>
+            <div class="input-group">
+                <div class="input-group1">
+                    {% csrf_token %}
+                    <label>
+                        {{ address_form.state.label }}
+                    </label>
+                    {{ address_form.state }}
+                    <label>
+                        {{ address_form.city.label }}
+                    </label>
+                    {{ address_form.city }}
+                    <label>
+                        {{ address_form.neighborhood.label }}
+                    </label>
+                    {{ address_form.neighborhood }}
+                    <label>
+                        {{ address_form.street.label }}
+                    </label>
+                    {{ address_form.street }}
+                </div>
+                <div class="input-group2">
+                    {% csrf_token %}
+                    <label>
+                        {{ address_form.number.label }}
+                    </label>
+                    {{ address_form.number }}
+                    <label>
+                        {{ address_form.receiver.label }}
+                    </label>
+                    {{ address_form.receiver }}
+                    <label>
+                        {{ address_form.cep.label }}
+                    </label>
+                    {{ address_form.cep }}
+                    <label>
+                        {{ address_form.complement.label }}
+                    </label>
+                    {{ address_form.complement }}
+                </div>
+            </div>
+            <div id="button-address">
+                <button>
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

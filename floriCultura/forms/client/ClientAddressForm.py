@@ -11,6 +11,17 @@ class ClientAddressForm(ModelForm):
         model = Address
         fields = ['state', 'city', 'neighborhood', 'street', 'number', 'receiver', 'cep', 'complement']
 
+        labels = {
+            'state': 'Estado',
+            'city': 'Cidade',
+            'neighborhood': 'Bairro',
+            'street': 'Rua',
+            'number': 'Número da casa/apto',
+            'receiver': 'Quem recebe a entrega?',
+            'cep': 'CEP',
+            'complement': 'Complemento',
+        }
+
         widgets = {
             'state': forms.TextInput(attrs={'class': 'input-box'}),
             'city': forms.TextInput(attrs={'class': 'input-box'}),
@@ -18,7 +29,8 @@ class ClientAddressForm(ModelForm):
             'street': forms.TextInput(attrs={'class': 'input-box'}),
             'number': forms.TextInput(attrs={'class': 'input-box'}),
             'receiver': forms.TextInput(attrs={'class': 'input-box'}),
-            'cep': forms.TextInput(attrs={'class': 'input-box'})
+            'cep': forms.TextInput(attrs={'class': 'input-box'}),
+            'complement': forms.TextInput(attrs={'class': 'input-box'}),
         }
 
     def clean_cep(self):

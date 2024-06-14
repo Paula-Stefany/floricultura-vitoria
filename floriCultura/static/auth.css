@@ -45,6 +45,13 @@ body{
     border-radius: 10px;
 }
 
+p{
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #621b02;
+
+}
+
 .link{
     margin-top: 6px;
 }
@@ -90,7 +97,8 @@ body{
 .input-box{
     display: block;
     padding: 8px;
-    margin-top: 6px;
+    margin-top: 2px;
+    margin-bottom: 4px;
     border-radius: 3px;
     border: none;
     box-shadow: 1px 1px 5px rgb(231, 231, 231);
@@ -99,7 +107,7 @@ body{
 }
 
 label{
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     cursor: pointer;
     color: #621b02;
 }
@@ -118,7 +126,7 @@ label{
 button{
     width: 13.5rem;
     height: 31px;
-    margin-top: 13px;
+    margin-top: 8px;
     background: rgb(152, 85, 60);
     border: none;
     outline: none;
@@ -132,4 +140,8 @@ button{
 button:hover{
     background:  rgb(140, 82, 61);
     box-shadow: 1px 1px 5px rgb(216, 216, 216);
+}
+
+#button-address button{
+    width: 100%;
 }
