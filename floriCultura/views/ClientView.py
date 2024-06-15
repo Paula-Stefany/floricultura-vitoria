@@ -8,7 +8,13 @@ def client_profile_view(request, id=None):
 
 
 def edit_client_view(request):
-    pass
+    client_form = ClientForm()
+
+    context = {
+       'client_form': client_form,
+    }
+
+    return render(request, template_name='EditClient.html', context=context, status=200)
 
 
 def edit_client_address_view(request):
@@ -18,5 +24,4 @@ def edit_client_address_view(request):
      'address_form': address_form,
     }
 
-    return render(request, template_name='Address.html', context=context, status=200)
-
+    return render(request, template_name='EditAddress.html', context=context, status=200)

@@ -10,6 +10,12 @@ class ClientForm(ModelForm):
         model = Client 
         fields = ['username', 'email', 'cpf']
 
+        labels = {
+            'username': 'Nome',
+            'email': 'E-mail',
+            'cpf': 'CPF'
+        }
+
         widgets = {
             'username': forms.TextInput(attrs={'class': 'input-box'}),
             'email': forms.EmailInput(attrs={'class': 'input-box'}),

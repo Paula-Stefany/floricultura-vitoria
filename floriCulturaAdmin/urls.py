@@ -24,6 +24,6 @@ urlpatterns = [
     path('', include('floriCultura.urls.HomeUrls')),
     path('', include('floriCultura.urls.AuthUrls')),
     path('', include('floriCultura.urls.ProductUrls')),
-    path('', include('floriCultura.urls.ClientUrls')),
+    path('profile/', include('floriCultura.urls.ClientUrls')),
     path('admin/', admin.site.urls),
     ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
