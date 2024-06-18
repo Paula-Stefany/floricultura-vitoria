@@ -14,6 +14,7 @@
             </div>
             <form>
                 <div class="input-group-login">
+                        {% csrf_token %}
                         {% for f in login_form %}
                         {{ f }}
                         {% endfor %}

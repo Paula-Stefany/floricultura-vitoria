@@ -13,7 +13,8 @@
                 <h1>Recuperação<br>de Senha</h1>
             </div>
             <div class="input-group-login">
-                <label for="email">{{ recovery_form.email.label }}</label>
+                {% csrf_token %}
+                <p>* Email para Recuperação de Senha</p>
                 {{ recovery_form.email }}
                 <button>
                     Enviar
