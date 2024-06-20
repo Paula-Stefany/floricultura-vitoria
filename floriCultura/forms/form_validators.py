@@ -6,7 +6,7 @@ def validate_password_equal(password1, password2):
     if password1 and password2 and password1 != password2:
         raise ValidationError('Senhas não coicidem')
     
-
+    
 def validate_password_strength(password):
 
     if len(password) < 8:
