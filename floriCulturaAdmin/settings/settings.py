@@ -73,6 +73,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'floriCulturaAdmin.wsgi.application'
 
+AUTHENTICATION_BACKENDS = [
+    'floriCultura.authentication.ClientBackend',
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
