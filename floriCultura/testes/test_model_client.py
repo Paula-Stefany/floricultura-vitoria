@@ -1,4 +1,4 @@
-from ..models.Client import Client
+from floriCultura.models.Client import Client
 from django.test import TestCase
 from ..models.Address import Address
 from ..models.State import State 

@@ -10,6 +10,7 @@ from floriCultura.models.City import City
 from floriCultura.models.Neighborhood import Neighborhood
 from floriCultura.models.Address import Address
 from django.contrib.auth import login, authenticate
+from django.core.exceptions import ValidationError
 
 
 def cadaster_view(request):
@@ -18,7 +19,7 @@ def cadaster_view(request):
     address_form = AddressForm()
     message = None 
 
-    if request.client.is_authenticated:
+    if request.user.is_authenticated:
         return redirect('/')
 
     if request.method == 'POST':
@@ -35,8 +36,11 @@ def cadaster_view(request):
         cep = request.POST['cep']
         complement = request.POST['complement']
         
+        print(username, email, cpf, password, state)
+
         cadaster_form = CadasterForm(request.POST)
         address_form = AddressForm(request.POST)
+
 
         if cadaster_form.is_valid() and address_form.is_valid():
             verifyEmail = Client.objects.filter(email=email).first 
@@ -57,7 +61,7 @@ def cadaster_view(request):
                 neighborhood_created.save()
                 address_created.save()
                 client_created.save()
-
+                print('oi')
 
                 if client_created is not None:
                     user = authenticate(email=email, password=password)
@@ -68,6 +72,8 @@ def cadaster_view(request):
                         message = {'type': 'danger', 'text': 'Erro ao autenticar o usuário'}
                 else:
                     message = {'type': 'danger', 'text': 'Um erro ocorreu ao tentar criar o usuário.'}
+        else:
+            print('oie')
 
     context = {
         'cadaster_form': cadaster_form,

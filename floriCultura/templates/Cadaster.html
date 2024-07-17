@@ -20,6 +20,13 @@
                     {% csrf_token %}
                     {% for f in cadaster_form %}
                         {{ f }}
+                        {% if f.errors %}
+                            <div class="erro">
+                                {% for error in f.errors %}
+                                    <p>* {{error}}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     {% endfor %}
                     <div class="title2">
                         <h2>Endereço de Entrega</h2>
@@ -34,6 +41,13 @@
                     {{ address_form.number }}
                     {{ address_form.complement }}
                     {{ address_form.cep }}
+                    {% if address_form.cep.errors %}
+                        <div class="erro">
+                            {% for error in address_form.cep.errors %}
+                            <p>* {{error}}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                     <div class="link">
                         <a href="#">Já possui conta? Faça o login</a>
                     </div>

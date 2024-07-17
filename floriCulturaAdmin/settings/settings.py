@@ -75,6 +75,7 @@ WSGI_APPLICATION = 'floriCulturaAdmin.wsgi.application'
 
 AUTHENTICATION_BACKENDS = [
     'floriCultura.authentication.ClientBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 # Database

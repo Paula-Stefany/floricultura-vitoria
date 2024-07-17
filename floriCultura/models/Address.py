@@ -7,7 +7,7 @@ class Address(models.Model):
     neighborhood = models.ForeignKey(Neighborhood, null=True, related_name='neighborhood', on_delete=models.SET_NULL)
     street = models.CharField(null=False, max_length=25)
     number = models.CharField(null=False, max_length=15)
-    complement = models.CharField(null=False, max_length=40)
+    complement = models.CharField(null=True, max_length=40)
     cep = models.CharField(null=False, max_length=12)
     receiver = models.CharField(null=True, blank=True, max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
