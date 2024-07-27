@@ -4,7 +4,7 @@ from .models import *
 class ClientAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'created_at'
-    list_display = ('username', 'created_at', 'address_list')
+    list_display = ('username', 'created_at', 'address_list', 'email')
     list_display_links = ('username', 'address_list')
     empty_value_display = 'Vazio'
     exclude = ('token',)

@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    display: flex;
+}
+
+.shoppingcart{
+    width: 70%;
+    padding: 2rem;
+}
+
+.shoppingcart header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.quantidade-itens{
+    color: rgb(173, 172, 172)
+}
+
+.title, h2{
+    color:  #621b02 
+}
+
+.product{
+    border: 1.2px solid rgb(173, 172, 172);
+    height: 6rem;
+    margin-bottom: 0.5rem;
+}
+
+.sumary{
+    padding: 2rem;
+    width: 16rem;
+}
+
+.sumary-area{
+    background-color: ghostwhite;
+}

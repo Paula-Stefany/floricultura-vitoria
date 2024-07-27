@@ -43,19 +43,22 @@ def cadaster_view(request):
 
 
         if cadaster_form.is_valid() and address_form.is_valid():
-            verifyEmail = Client.objects.filter(email=email).first 
-
+            verifyEmail = Client.objects.filter(email=email).first()
+            print(verifyEmail)
+            print('Dados Válidos')
             if verifyEmail is not None:
                 message = {'type': 'danger', 'text': 'Já existe um usuário com esse e-mail!'}
+                print('Este email já esiste')
             else:
+                print('Processo de criação')
                 state_created = State.objects.create(name=state)
                 city_created = City.objects.create(name=city)
                 neighborhood_created = Neighborhood.objects.create(name=neighborhood)
 
                 address_created = Address.objects.create(state=state_created, city=city_created, neighborhood=neighborhood_created, street=street, number=number, receiver=receiver, cep=cep, complement=complement)
 
-                client_created = Client.objects.create(username, email, cpf, password, address=address_created)
-
+                client_created = Client.objects.create(username=username, email=email, cpf=cpf, password=password, address=address_created)
+                print('Clientes criados!')
                 state_created.save()
                 city_created.save()
                 neighborhood_created.save()
@@ -65,9 +68,14 @@ def cadaster_view(request):
 
                 if client_created is not None:
                     user = authenticate(email=email, password=password)
+                    print(user)
                     if user:
-                        login(request, user)
-                        message = {'type': 'success', 'text': 'Conta criada com sucesso'}
+                        try:
+                            login(request, user)
+                            message = {'type': 'success', 'text': 'Conta criada com sucesso'}
+                        except Exception as e:
+                            message = {'type': 'danger', 'text': 'Erro ao autenticar o usuário'}
+                            print(e)
                     else:
                         message = {'type': 'danger', 'text': 'Erro ao autenticar o usuário'}
                 else:
