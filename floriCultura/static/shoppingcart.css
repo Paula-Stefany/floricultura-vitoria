@@ -20,25 +20,107 @@
     margin-bottom: 2rem;
 }
 
-.quantidade-itens{
-    color: rgb(173, 172, 172)
+.quantidade-itens, .final-price{
+    color: rgb(173, 172, 172);
+    font-size: 0.9rem;
 }
 
 .title, h2{
-    color:  #621b02 
+    color:  #621b02; 
+}
+
+h2{
+    margin-bottom: 2rem;
+}
+
+.products-details, .sumary-details{
+    color: rgb(173, 172, 172);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
 }
 
 .product{
     border: 1.2px solid rgb(173, 172, 172);
     height: 6rem;
     margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product p{
+    font-size: 0.7rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.product-image{
+    height: 100%;
+    width: 6rem;
 }
 
 .sumary{
     padding: 2rem;
     width: 16rem;
+    background-color: rgb(241, 241, 252);
 }
 
-.sumary-area{
-    background-color: ghostwhite;
+.input-box{
+    margin-top: 1rem;
+}
+
+label{
+    font-size: 0.7rem;
+    color: rgb(173, 172, 172);
+}
+
+input{
+    width: 100%;
+    border: none;
+    padding: 0.2rem;
+    margin-top: 0.2rem;
+    outline: none;
+}
+
+input::placeholder{
+    font-size: 0.6rem;
+    color: rgb(184, 183, 183);
+}
+
+.button-apply {
+    width: 5rem;
+    height: 1.4rem;
+    margin-top: 0.4rem;
+    border: none;
+    background-color: rgb(225, 6, 6);
+    color: white;
+    font-size: 0.7rem;
+}
+
+.button-apply:hover{
+    background-color: rgb(190, 2, 2);
+    cursor: pointer;
+}
+
+.final-price{
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    align-items: center;
+    border-top: 1.5px solid rgb(173, 172, 172);
+    margin-top: 1.6rem;
+}
+
+.button-checkout{
+    background-color: rgb(3, 3, 209);
+    border: none;
+    height: 1.4rem;
+    width: 100%;
+    color: white;
+    font-size: 0.7rem;
+}
+
+.button-checkout:hover{
+    background-color:  rgb(2, 2, 170);
+    cursor: pointer;
 }
