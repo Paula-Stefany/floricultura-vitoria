@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from floriCultura.forms.client.ClientAddressForm import ClientAddressForm
-from floriCultura.forms.client.ClientForm import ClientForm
+from floriCultura.forms.client.UserClientForm import ClientForm
 
 
 def client_profile_view(request, id=None):

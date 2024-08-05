@@ -1,20 +1,21 @@
 from django.contrib import admin
 from .models import *
+from django.contrib.auth import get_user_model
+
+
 
 class ClientAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'created_at'
-    list_display = ('username', 'created_at', 'address_list', 'email')
-    list_display_links = ('username', 'address_list')
+    list_display = ('created_at', 'address_list',)
+    list_display_links = ('address_list',)
     empty_value_display = 'Vazio'
     exclude = ('token',)
-    search_fields = ('username',)
-    list_filter = ('username',)
 
 
     fieldsets = (
         ('Dados Pessoais', {
-            'fields': ('username', 'email', 'cpf', 'password', 'image')
+            'fields': ( 'cpf', 'image')
         }),
         ('Endereço do Entrega', {
             'fields': ('address',)

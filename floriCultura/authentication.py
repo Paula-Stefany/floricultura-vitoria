@@ -3,21 +3,22 @@ from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.hashers import check_password
 from django.http import HttpRequest
-from .models import Client
-
+from django.contrib.auth.models import User
 
 class ClientBackend(BaseBackend):
 
     def authenticate(self, request, email=None, password=None, **kwargs):
+
         try:
-            client = Client.objects.get(email=email)
-            if client and check_password(password, client.password):
-                return client
-        except Client.DoesNotExist:
+            user = User.objects.get(email=email)
+            if user and user.check_password(password):
+                return user.client
+        except User.DoesNotExist:
             return None 
+        
     def get_user(self, user_id):
 
         try:
-            return Client.objects.get(pk=user_id)
-        except Client.DoesNotExist:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
             return None 
