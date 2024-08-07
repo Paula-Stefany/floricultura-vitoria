@@ -15,13 +15,13 @@ class Client(models.Model):
     def __str__(self):
         return f'{self.user.username}'
     
-    @receiver(post_save, sender=User)
+    '''@receiver(post_save, sender=User)
     def create_user_client(sender, instance, created, **kwargs):
         try:
             if created:
                 Client.objects.create(user=instance)
         except:
-            pass
+            pass'''
     
     @receiver(post_save, sender=User)
     def save_user_client(sender, instance, **kwargs):

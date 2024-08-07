@@ -12,7 +12,7 @@ class ClientBackend(BaseBackend):
         try:
             user = User.objects.get(email=email)
             if user and user.check_password(password):
-                return user.client
+                return user
         except User.DoesNotExist:
             return None 
         

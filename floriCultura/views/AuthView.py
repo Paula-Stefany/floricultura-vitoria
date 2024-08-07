@@ -11,6 +11,8 @@ from floriCultura.models.Neighborhood import Neighborhood
 from floriCultura.models.Address import Address
 from django.contrib.auth import login, authenticate
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
+from django.db import transaction
 
 
 def cadaster_view(request):
@@ -43,28 +45,33 @@ def cadaster_view(request):
 
 
         if cadaster_form.is_valid() and address_form.is_valid():
-            verifyEmail = Client.objects.filter(email=email).first()
-            print(verifyEmail)
-            print('Dados Válidos')
+            verifyEmail = User.objects.filter(email=email).first()
+
             if verifyEmail is not None:
                 message = {'type': 'danger', 'text': 'Já existe um usuário com esse e-mail!'}
                 print('Este email já esiste')
             else:
-                print('Processo de criação')
-                state_created = State.objects.create(name=state)
-                city_created = City.objects.create(name=city)
-                neighborhood_created = Neighborhood.objects.create(name=neighborhood)
+                try:
+                    with transaction.atomic():
+                        state_created = State.objects.create(name=state)
+                        city_created = City.objects.create(name=city)
+                        neighborhood_created = Neighborhood.objects.create(name=neighborhood)
 
-                address_created = Address.objects.create(state=state_created, city=city_created, neighborhood=neighborhood_created, street=street, number=number, receiver=receiver, cep=cep, complement=complement)
+                        address_created = Address.objects.create(state=state_created, city=city_created, neighborhood=neighborhood_created, street=street, number=number, receiver=receiver, cep=cep, complement=complement)
 
-                client_created = Client.objects.create(username=username, email=email, cpf=cpf, password=password, address=address_created)
-                print('Clientes criados!')
-                state_created.save()
-                city_created.save()
-                neighborhood_created.save()
-                address_created.save()
-                client_created.save()
-                print('oi')
+                        user_created = User.objects.create_user(username=username, email=email, password=password)
+
+                        state_created.save()
+                        city_created.save()
+                        neighborhood_created.save()
+                        address_created.save()
+                        user_created.save()
+
+                        client_created = Client.objects.create(user=user_created, address=address_created, cpf=cpf)
+                        client_created.save()
+                except Exception as e:
+                    print(e)
+                    message = {'type': 'danger', 'text': 'Ocorreu um erro durante a criação do usuário'}
 
                 if client_created is not None:
                     user = authenticate(email=email, password=password)
@@ -72,16 +79,16 @@ def cadaster_view(request):
                     if user:
                         try:
                             login(request, user)
-                            message = {'type': 'success', 'text': 'Conta criada com sucesso'}
+                            return redirect('/')
                         except Exception as e:
-                            message = {'type': 'danger', 'text': 'Erro ao autenticar o usuário'}
+                            message = {'type': 'danger', 'text': 'Erro ao logar o usuário'}
                             print(e)
                     else:
                         message = {'type': 'danger', 'text': 'Erro ao autenticar o usuário'}
                 else:
                     message = {'type': 'danger', 'text': 'Um erro ocorreu ao tentar criar o usuário.'}
         else:
-            print('oie')
+            message = {'type': 'danger', 'text': 'Dados do formulário inválidos'}
 
     context = {
         'cadaster_form': cadaster_form,
