@@ -9,10 +9,9 @@ class ClientAddressForm(ModelForm):
 
     class Meta:
         model = Address
-        fields = ['state', 'city', 'neighborhood', 'street', 'number', 'receiver', 'cep', 'complement']
+        fields = ['city', 'neighborhood', 'street', 'number', 'receiver', 'cep', 'complement']
 
         labels = {
-            'state': 'Estado',
             'city': 'Cidade',
             'neighborhood': 'Bairro',
             'street': 'Rua',
@@ -23,7 +22,6 @@ class ClientAddressForm(ModelForm):
         }
 
         widgets = {
-            'state': forms.TextInput(attrs={'class': 'input-box'}),
             'city': forms.TextInput(attrs={'class': 'input-box'}),
             'neighborhood': forms.TextInput(attrs={'class': 'input-box'}),
             'street': forms.TextInput(attrs={'class': 'input-box'}),

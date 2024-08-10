@@ -2,7 +2,6 @@ from floriCultura.models import *
 
 
 class Address(models.Model):
-    state = models.ForeignKey(State, null=True, related_name='state', on_delete=models.SET_NULL)
     city = models.ForeignKey(City, null=True, related_name='city', on_delete=models.SET_NULL)
     neighborhood = models.ForeignKey(Neighborhood, null=True, related_name='neighborhood', on_delete=models.SET_NULL)
     street = models.CharField(null=False, max_length=25)

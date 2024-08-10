@@ -7,8 +7,8 @@ from django.contrib.auth import get_user_model
 class ClientAdmin(admin.ModelAdmin):
 
     date_hierarchy = 'created_at'
-    list_display = ('created_at', 'address_list',)
-    list_display_links = ('address_list',)
+    list_display = ('created_at', 'address_list', 'usernames_list')
+    list_display_links = ('address_list', 'usernames_list')
     empty_value_display = 'Vazio'
     exclude = ('token',)
 
@@ -25,6 +25,10 @@ class ClientAdmin(admin.ModelAdmin):
     def address_list(self, obj):
         if obj.address:
             return f'{obj.address.city} - {obj.address.state}'
+    
+    def usernames_list(self, obj):
+        if obj.user:
+            return f'{obj.user.username}'
 
 
 admin.site.register(Client, ClientAdmin)
