@@ -29,3 +29,7 @@ def validate_cep(value):
 
     if not cep.isdigit() or len(cep) > 8:
         raise ValidationError('CEP inválido')
+
+def validate_city_state(city, state):
+    if city.state != state:
+        raise ValidationError('Cidade incompatível com o Estado')

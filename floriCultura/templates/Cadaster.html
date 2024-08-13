@@ -32,12 +32,21 @@
                         <h2>Endereço de Entrega</h2>
                     </div>
                     {{ address_form.receiver }}
-                    {{ address_form.street }}
+                    {{ address_form.state.label_tag }}
+                    {{ address_form.state }}
                 </div>
                 <div class="input-group2">
-                    {{ address_form.neighborhood }}
+                    {{ address_form.city.label_tag }}
                     {{ address_form.city }}
-                    {{ address_form.state }}
+                    {% if address_form.city.errors %}
+                        <div class="erro">
+                            {% for error in address_form.city.errors %}
+                            <p>* {{error}}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {{ address_form.neighborhood }}
+                    {{ address_form.street }}
                     {{ address_form.number }}
                     {{ address_form.complement }}
                     {{ address_form.cep }}

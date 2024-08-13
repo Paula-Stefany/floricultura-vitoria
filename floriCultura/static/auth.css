@@ -110,7 +110,7 @@ p{
 label{
     font-size: 0.8rem;
     cursor: pointer;
-    color: #621b02;
+    color: rgb(83, 83, 83);
 }
 
 .input-box:hover,

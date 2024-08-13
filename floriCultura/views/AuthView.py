@@ -29,8 +29,8 @@ def cadaster_view(request):
         email = request.POST['email']
         cpf = request.POST['cpf']
         password = request.POST['password2']
-        state = request.POST['state']
-        city = request.POST['city']
+        id_state = request.POST['state']
+        id_city = request.POST['city']
         neighborhood = request.POST['neighborhood']
         street = request.POST['street']
         number = request.POST['number']
@@ -38,7 +38,7 @@ def cadaster_view(request):
         cep = request.POST['cep']
         complement = request.POST['complement']
         
-        print(username, email, cpf, password, state)
+        print(username, email, cpf, password)
 
         cadaster_form = CadasterForm(request.POST)
         address_form = AddressForm(request.POST)
@@ -53,22 +53,15 @@ def cadaster_view(request):
             else:
                 try:
                     with transaction.atomic():
-                        state_created = State.objects.create(name=state)
-                        city_created = City.objects.create(name=city)
+                        city = City.objects.get(id=id_city)
                         neighborhood_created = Neighborhood.objects.create(name=neighborhood)
 
-                        address_created = Address.objects.create(state=state_created, city=city_created, neighborhood=neighborhood_created, street=street, number=number, receiver=receiver, cep=cep, complement=complement)
+                        address_created = Address.objects.create(city=city, neighborhood=neighborhood_created, street=street, number=number, receiver=receiver, cep=cep, complement=complement)
 
                         user_created = User.objects.create_user(username=username, email=email, password=password)
 
-                        state_created.save()
-                        city_created.save()
-                        neighborhood_created.save()
-                        address_created.save()
-                        user_created.save()
-
                         client_created = Client.objects.create(user=user_created, address=address_created, cpf=cpf)
-                        client_created.save()
+                        
                 except Exception as e:
                     print(e)
                     message = {'type': 'danger', 'text': 'Ocorreu um erro durante a criação do usuário'}
