@@ -57,6 +57,11 @@
                             {% endfor %}
                         </div>
                     {% endif %}
+                    {% if message %}
+                    <div class="alert-{{message.type}}">
+                        <p>{{ message.text }}</p>
+                    </div>
+                    {% endif %}
                     <div class="link">
                         <a href="#">Já possui conta? Faça o login</a>
                     </div>

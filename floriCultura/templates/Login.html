@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="formulario">
-        <form>
+        <form method="POST" action="/login">
             <div class="title">
                 <h1>Login</h1>
             </div>
@@ -18,6 +18,11 @@
                         {% for f in login_form %}
                         {{ f }}
                         {% endfor %}
+                        {% if message %}
+                            <div class="alert-{{message.type}}">
+                                <p>{{ message.text }}</p>
+                            </div>
+                        {% endif %}
                         <div class="link">
                             <a href="#">Esqueçeu a senha?</a>
                         </div>

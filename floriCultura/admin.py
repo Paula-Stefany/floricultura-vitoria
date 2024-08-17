@@ -24,7 +24,7 @@ class ClientAdmin(admin.ModelAdmin):
 
     def address_list(self, obj):
         if obj.address:
-            return f'{obj.address.city} - {obj.address.state}'
+            return f'{obj.address.city} - {obj.address.city.state}'
     
     def usernames_list(self, obj):
         if obj.user:

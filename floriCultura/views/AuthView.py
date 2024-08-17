@@ -25,38 +25,37 @@ def cadaster_view(request):
         return redirect('/')
 
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        cpf = request.POST['cpf']
-        password = request.POST['password2']
-        id_state = request.POST['state']
-        id_city = request.POST['city']
-        neighborhood = request.POST['neighborhood']
-        street = request.POST['street']
-        number = request.POST['number']
-        receiver = request.POST['receiver']
-        cep = request.POST['cep']
-        complement = request.POST['complement']
         
-        print(username, email, cpf, password)
 
         cadaster_form = CadasterForm(request.POST)
         address_form = AddressForm(request.POST)
 
 
         if cadaster_form.is_valid() and address_form.is_valid():
-            verifyEmail = User.objects.filter(email=email).first()
 
+            username = cadaster_form.cleaned_data['username']
+            email = cadaster_form.cleaned_data['email']
+            cpf = cadaster_form.cleaned_data['cpf']
+            password = cadaster_form.cleaned_data['password2']
+            city = address_form.cleaned_data['city']
+            neighborhood_name = address_form.cleaned_data['neighborhood']
+            street = address_form.cleaned_data['street']
+            number = address_form.cleaned_data['number']
+            receiver = address_form.cleaned_data['receiver']
+            cep = address_form.cleaned_data['cep']
+            complement = address_form.cleaned_data['complement']
+
+            verifyEmail = User.objects.filter(email=email).first()
             if verifyEmail is not None:
-                message = {'type': 'danger', 'text': 'Já existe um usuário com esse e-mail!'}
-                print('Este email já esiste')
+                message = {'type': 'danger', 'text': '* Já existe um usuário com esse e-mail!'}
+                print('Este email já existe')
             else:
+                client_created = None
                 try:
                     with transaction.atomic():
-                        city = City.objects.get(id=id_city)
-                        neighborhood_created = Neighborhood.objects.create(name=neighborhood)
+                        neighborhood, created = Neighborhood.objects.get_or_create(name=neighborhood_name)
 
-                        address_created = Address.objects.create(city=city, neighborhood=neighborhood_created, street=street, number=number, receiver=receiver, cep=cep, complement=complement)
+                        address_created = Address.objects.create(city=city, neighborhood=neighborhood, street=street, number=number, receiver=receiver, cep=cep, complement=complement)
 
                         user_created = User.objects.create_user(username=username, email=email, password=password)
 
@@ -64,7 +63,7 @@ def cadaster_view(request):
                         
                 except Exception as e:
                     print(e)
-                    message = {'type': 'danger', 'text': 'Ocorreu um erro durante a criação do usuário'}
+                    message = {'type': 'danger', 'text': '* Ocorreu um erro durante a criação do usuário'}
 
                 if client_created is not None:
                     user = authenticate(email=email, password=password)
@@ -74,14 +73,14 @@ def cadaster_view(request):
                             login(request, user)
                             return redirect('/')
                         except Exception as e:
-                            message = {'type': 'danger', 'text': 'Erro ao logar o usuário'}
+                            message = {'type': 'danger', 'text': '* Erro ao logar o usuário'}
                             print(e)
                     else:
-                        message = {'type': 'danger', 'text': 'Erro ao autenticar o usuário'}
+                        message = {'type': 'danger', 'text': '* Erro ao autenticar o usuário'}
                 else:
-                    message = {'type': 'danger', 'text': 'Um erro ocorreu ao tentar criar o usuário.'}
+                    message = {'type': 'danger', 'text': '* Um erro ocorreu ao tentar criar o usuário.'}
         else:
-            message = {'type': 'danger', 'text': 'Dados do formulário inválidos'}
+            message = {'type': 'danger', 'text': '* Dados do formulário inválidos'}
 
     context = {
         'cadaster_form': cadaster_form,
@@ -95,8 +94,39 @@ def cadaster_view(request):
 def login_view(request):
     
     login_form = LoginForm()
+    message = None
+
+    if request.user.is_authenticated:
+        return redirect('/')
+    
+    if request.method == 'POST':
+
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+
+            email = login_form.cleaned_data['email']
+            password = login_form.cleaned_data['password']
+
+            verify_email = User.objects.filter(email = email).exists()
+            if not verify_email:
+                message = {'type': 'danger', 'text': '* Dados inválidos'}
+                print(message)
+            else:
+                user = authenticate(email=email,
+                password = password)
+                if user:
+                    try:
+                        login(request, user)
+                        return redirect('/')
+                    except Exception as e:
+                        message = {'type': 'danger', 'text': '* Erro ao logar o usuário'}
+                        print(e)
+                else:
+                    message = {'type': 'danger', 'text': '* Dados inválidos'}
+        
     context = {
         'login_form' : login_form,
+        'message' : message,
     }
 
     return render(request, template_name='Login.html', context=context, status=200)

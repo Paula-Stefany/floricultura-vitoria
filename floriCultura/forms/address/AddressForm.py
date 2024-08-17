@@ -20,9 +20,12 @@ class AddressForm(forms.Form):
         validate_cep(cep)
         return cep 
     
-    def clean_city(self):
-        city = self.cleaned_data.get('city')
-        state = self.cleaned_data.get('state')
+    def clean(self):
+        cleaned_data = super().clean()
+        city = cleaned_data.get('city')
+        state = cleaned_data.get('state')
 
-        validate_city_state(city, state)
-        return city
+        if city and state:
+            validate_city_state(city, state)
+
+        return cleaned_data
