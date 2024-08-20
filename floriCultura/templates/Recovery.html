@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="formulario">
-        <form>
+        <form method="POST">
             <div class="title">
                 <h1>Recuperação<br>de Senha</h1>
             </div>
@@ -16,6 +16,11 @@
                 {% csrf_token %}
                 <p>* Email para Recuperação de Senha</p>
                 {{ recovery_form.email }}
+                {% if message %}
+                <div class="alert-{{message.type}}">
+                <p>{{ message.text }}</p>
+                </div>
+                {% endif %}
                 <button>
                     Enviar
                 </button>

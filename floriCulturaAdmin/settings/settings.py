@@ -17,6 +17,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 SETTINGS_SECRET_KEY = os.getenv("SETTINGS_SECRET_KEY")
+REMETENTE = os.getenv('REMETENTE')
+REMETENTE_PASSWORD = os.getenv('REMETENTE_PASSWORD')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,3 +128,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/logout'
+LOGOUT_REDIRECT_URL = '/login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_HOST_USER = REMETENTE
+EMAIL_HOST_PASSWORD = REMETENTE_PASSWORD
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_SSL = False
