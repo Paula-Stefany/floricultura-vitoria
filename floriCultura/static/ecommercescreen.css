@@ -126,3 +126,64 @@ input::placeholder{
     font-size: 0.8rem;
     margin-right: 0.3rem;
 }
+
+
+/* PRODUCT SECTION */
+
+.product-section{
+    width: 100%;
+    display: flex;
+    padding: 2rem 0;
+}
+
+.product-content{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: start;
+}
+
+.product-card{
+    border: 1px solid black;
+    width: 240px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image,
+.product-text{
+    width: 100%;
+    display: flex;
+    height: 50%;
+}
+
+.product-img{
+    width: 60%;
+    margin: auto;
+    background-position: center;
+    background-size: cover; 
+}
+
+.product-text{
+    flex-direction: column;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    border-top: 1px solid black;
+}
+
+.product-button{
+    background: rgb(203, 181, 148);
+    padding: 0.2rem 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.product-button a{
+    color: white;
+}

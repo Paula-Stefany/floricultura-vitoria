@@ -3,5 +3,6 @@ from floriCultura.views.HomeView import home_view
 
 
 urlpatterns = [
-    path('', home_view),
+    path('floriculturavitoria', home_view, name='floricultura_vitoria'),
+    path('floriculturavitoria/<int:category_id>', home_view, name='floricultura_vitoria'),
 ]
